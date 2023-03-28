@@ -189,7 +189,7 @@ Renderer <- R6::R6Class( # nolint: object_name_linter.
     tableBlock2md = function(block) {
       basename_table <- basename(block$get_content())
       file.copy(block$get_content(), file.path(private$output_dir, basename_table))
-      sprintf("```{r echo = FALSE}\nreadRDS('%s')\n```", basename_table)
+      sprintf("```{r echo = FALSE}\nrtables::as_html(readRDS('%s'))\n```", basename_table)
     },
     block2md = function(block) {
       block_class <- class(block)[1]
